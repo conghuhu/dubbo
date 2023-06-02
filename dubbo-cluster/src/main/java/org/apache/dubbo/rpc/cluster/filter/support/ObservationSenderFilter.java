@@ -75,6 +75,9 @@ public class ObservationSenderFilter implements ClusterFilter, BaseFilter.Listen
         if (observation == null) {
             return;
         }
+        if (appResponse.hasException()) {
+            observation.error(appResponse.getException());
+        }
         observation.stop();
     }
 

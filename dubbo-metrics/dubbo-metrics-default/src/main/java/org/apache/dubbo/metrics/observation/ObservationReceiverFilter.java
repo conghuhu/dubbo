@@ -70,6 +70,9 @@ public class ObservationReceiverFilter implements Filter, BaseFilter.Listener, S
         if (observation == null) {
             return;
         }
+        if (appResponse.hasException()) {
+            observation.error(appResponse.getException());
+        }
         observation.stop();
     }
 
